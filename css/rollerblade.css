@@ -1,0 +1,521 @@
+@font-face {
+ 	font-family: 'proxima-nova';
+ 	src: url('../fonts/proximanova.eot'); /* IE9 Compat Modes */
+ 	src: url('../fonts/proximanova.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url('../fonts/proximanova.woff') format('woff'), /* Modern Browsers */
+		url('../fonts/proximanova.ttf')	format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/proximanova.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+ 	font-family: 'bebas-neue';
+ 	src: url('../fonts/bebasneuebold.eot'); /* IE9 Compat Modes */
+ 	src: url('../fonts/bebasneuebold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url('../fonts/bebasneuebold.woff') format('woff'), /* Modern Browsers */
+		url('../fonts/bebasneuebold.ttf')	format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/bebasneuebold.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+#rollerblade-button-wrapper {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 50px;
+	height: 50px;
+	z-index: 9999999;
+	padding: 0;
+	vertical-align: middle;
+	line-height: 36px;
+}
+
+#rollerblade-button-wrapper:hover, #rollerblade-button-wrapper.stay-visible {
+	height: 100px;
+}
+
+#rollerblade-button-wrapper a:hover {
+	text-decoration: none;
+}
+
+#rollerblade-button {
+	width: 50px;
+	height: 50px;
+	background: url(../img/rb-icon-sprite.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+
+#rollerblade-button:hover, #rollerblade-button-wrapper:hover>#rollerblade-button:hover {
+	background-position: 0 -50px;
+}
+
+body.rollerblade-active #rollerblade-button-wrapper:hover {
+	height: 50px;
+}
+
+body.rollerblade-active #rollerblade-button {
+	background-position: 0 -150px !important;
+}
+
+body.rollerblade-active #rollerblade-button:hover {
+	background-position: 0 -200px !important;
+}
+
+#rollerblade-button-wrapper.stay-visible>#rollerblade-button, #rollerblade-button-wrapper:hover>#rollerblade-button {
+	background-position: 0 -100px;
+}
+
+#rollerblade-button-wrapper.stay-visible:hover {
+	background-position: 0 -50px;
+}
+
+#rb-remote-panel-button {
+	display: none;
+	width: 50px;
+	height: 50px;
+	background: transparent url('../img/rb-remote-panel-button.png') 0 0 no-repeat;
+	outline: none;
+}
+
+#rb-remote-panel-button:hover {
+	background-position: 0 -50px;
+}
+
+#rollerblade-button-wrapper.stay-visible>#rb-remote-panel-button {
+	background-position: 0 -100px;
+}
+
+#rollerblade-button-wrapper:hover>#rb-remote-panel-button, #rollerblade-button-wrapper.stay-visible>#rb-remote-panel-button {
+	display: block;
+}
+
+.rollerblade-active #rb-remote-panel-button {
+	display: none !important;
+}
+
+#rb-remote-panel {
+	display: none;
+	position: relative;
+	top: -50px;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: #FFF;
+	cursor: default;
+	font-family: 'proxima-nova';
+	border-radius: 10px 0 10px 10px;
+	-moz-border-radius: 10px 0 10px 10px;
+	-webkit-border-radius: 10px 0 10px 10px;
+}
+
+.rollerblade-active #rb-remote-panel {
+	display: none !important;
+}
+
+#rb-remote-panel.rb-remote-logged-in {
+	border-radius: 10px 0 0 10px;
+	-moz-border-radius: 10px 0 0 10px;
+	-webkit-border-radius: 10px 0 0 10px;
+}
+
+#rb-remote-log-in-credentials-wrapper {
+	display: none;
+	padding: 10px 20px;
+}
+
+#rb-remote-log-in-credentials-wrapper h4 {
+	color: #FFF;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	text-align: center;
+	font-weight: normal;
+	line-height: 1.2;
+	font-family: inherit;
+}
+
+.rb-log-in-field-wrapper label, .rb-log-in-field-wrapper input {
+	display: block;
+	width: 100%;
+	font-size: 16px;
+}
+
+.rb-log-in-field-wrapper input {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	padding: 8px 10px 7px;
+	color: #2b2b2b;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+#rb-remote-log-in, #rb-remote-log-in:hover, #rb-remote-log-in:active, #rb-remote-log-in:visited {
+	background-color: #00AFFF;
+	color: #FFF;
+	display: inline-block;
+	height: 36px;
+	margin-top: 10px;
+	padding: 0 15px;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	font-size: 16px;
+	text-decoration: none;
+	outline: none;
+}
+
+#rb-remote-log-in-error-message {
+	color: #FFF;
+	display: none;
+	float: right;
+	height: 31px;
+	margin-top: 10px;
+	padding: 3px 15px 0 15px;
+	border: 1px red solid;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	font-size: 12px;
+	font-style: italic;
+	line-height: 13px;
+	width: 240px;
+	overflow: hidden;
+	box-sizing: content-box;
+}
+
+#rb-remote-user-details-wrapper {
+	display: none;
+}
+
+#rb-remote-user-details {
+	float: left;
+	padding: 7px 20px;
+	font-size: 16px;
+	color: #FFF;
+	line-height: 36px;
+	font-family: inherit;
+}
+
+#rb-remote-log-out {
+	display: block;
+	width: 50px;
+	height: 50px;
+	background: transparent url('../img/rb-logout-icon-white.svg') 18px 17px no-repeat;
+	float: right;
+}
+
+#rb-remote-log-out:hover {
+	background: transparent url('../img/rb-logout-icon-blue.svg') 18px 17px no-repeat;
+}
+
+#mouse-tip {
+	display:none;
+	background-color: #00AFFF;
+	color: #FFF;
+	padding: 5px 15px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	position:fixed;
+	overflow:hidden;
+	z-index: 9999998;
+	font-size: 14px;
+}
+
+#feedback-highlighter-next-clone {
+	display: none;
+}
+
+#feedback-overview {
+	position: absolute;
+	cursor: auto;
+}
+
+#rb-loading-overlay {
+	background-color: #000;
+	opacity: 0.5;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99999998;
+}
+
+#rb-loading {
+	position: fixed;
+	width: 296px;
+	height: 32px;
+	padding-top: 48px;
+	color: #FFF;
+	background: transparent url('../img/loading.gif') 124px 0 no-repeat;
+	background-size: 48px 48px;
+	z-index: 99999999;
+	font-size: 24px;
+	font-weight: bold;
+	font-family: Lato, sans-serif;
+	text-align: center;
+}
+
+#rb-button-drag-area {
+	height: 10px;
+	width: 50px;
+	cursor: move !important;
+}
+
+/* Options page header */
+#rb-options-header {
+	background-color: rgb(0, 175, 255);
+	min-height: 120px;
+	margin-left: -20px;
+}
+
+#rb-logo-wrapper {
+	float: left;
+	width: 14.999083%;
+	max-width: 180px;
+	min-width: 160px;
+	background: rgb(0, 175, 255) url('../img/rb-background.jpg') 0 0 no-repeat;
+	height: 120px;
+}
+
+#rb-options-icon {
+	float: left;
+	width: 65%;
+	max-width: 120px;
+	min-width: 66px;
+	margin: 0 0 14px 5%;
+	max-height: 67px;
+}
+
+#rb-logo {
+	margin: 12px auto 0 auto;
+	width: 65%;
+	min-width: 117px;
+	max-height: 20px;
+}
+
+#rb-options-header-text-wrapper {
+	float: left;
+	height: 100%;
+	width: 85%;
+	padding: 32px 0 0 0;
+}
+
+#rb-options-slogan {
+	float: left;
+	font-size: 2.5em;
+	font-weight: 100;
+	color: #FFF;
+	font-family: 'bebas-neue';
+	margin: 0 0 0 50px;
+}
+
+#rb-options-header-links {
+	float: left;
+	font-size: 18px;
+	width: 85%;
+	line-height: 18px;
+	color: #FFF;
+	margin: 0 0 0 50px;
+	clear: both;
+	font-family: 'proxima-nova';
+}
+
+#rb-options-header-links a {
+	color: #FFF;
+	text-decoration: none;
+}
+
+#rb-options-header-links a:hover {
+	text-decoration: underline;
+}
+
+#rb-subdomain-saved {
+	display: none;
+}
+
+#rb-subdomain-saved a, #rb-subdomain-saved a:hover, #rb-subdomain-saved a:active {
+	color: #0073AA;
+}
+
+@media (max-width: 1245px) {
+	
+	#rb-logo-wrapper {
+		width: 160px;
+	}
+	
+	#rb-options-header-text-wrapper {
+		width: 885px;
+	}
+	
+	#rb-options-header-links {
+		width: 835px;
+	}
+
+}
+
+@media (max-width: 1220px) {
+	
+	#rb-options-header-text-wrapper {
+		width: 65%;
+		padding-top: 17px;
+	}
+	
+	#rb-options-header-links {
+		width: 490px;
+		line-height: 22px;
+	}
+	
+	#after-third-item {
+		display: none;
+	}
+
+}
+
+@media (max-width: 1050px) {
+
+	#rb-options-slogan {
+		font-size: 2em;
+	}
+	
+}
+
+@media (max-width: 720px) {
+
+	#rb-options-header-text-wrapper {
+		padding-top: 25px;
+	}
+	
+	#rb-options-slogan {
+		font-size: 1.5em;
+	}
+	
+	#rb-options-header-links {	
+		width: 400px;
+	}
+	
+	#rb-options-header-links a {
+		font-size: 14px;
+	}
+	
+}
+
+@media (max-width: 600px) {
+	
+	#rb-options-header-text-wrapper {
+		padding-top: 30px;
+	}
+	
+	#rb-options-slogan {
+		font-size: 1.3em;
+	}
+	
+	#rb-options-header-links {	
+		width: 320px;
+	}
+	
+	#rb-options-header-links a {
+		font-size: 11px;
+	}
+	
+	#rb-remote-log-in-error-message {
+		width: 145px;
+		font-size: 10px;
+	}
+	
+}
+
+@media (max-width: 480px) {
+	
+	#rb-options-header {
+		margin-left: -10px;
+		min-height: 0;
+	}
+	
+	#rb-options-header, #rb-logo-wrapper, #rb-logo {
+		height: 49px;
+	}
+	
+	#rb-logo-wrapper {
+		background: none;
+		width: 85%;
+		max-width: none;
+		margin: 10px;
+		height: 29px;
+	}
+	
+	#rb-logo {
+		margin: 0;
+		width: 100%;
+	}
+	
+	#rb-options-icon {
+		width: 36px;
+		height: 29px;
+		display: inline-block;
+		min-width: 0;
+		max-width: none;
+		margin: 0;
+	}
+	
+	#rb-options-logo {
+		display: inline-block;
+		margin: 5px 0 0 15px;
+	}
+	
+	#rb-options-slogan {
+		display: none;
+	}
+	
+	#rb-options-header-text-wrapper {
+		display: block;
+		padding: 0;
+		height: 49px;
+		width: 49px;
+		background: transparent url('../img/menu-icon.svg') 12px 16px no-repeat;
+		position: absolute;
+		right: 0;
+		overflow: visible;
+	}
+	
+	#rb-options-header-text-wrapper:hover {
+		background-color: #0D97DB;
+	}
+	
+	#rb-options-header-text-wrapper:hover>#rb-options-header-links {
+		display: block;
+	}
+	
+	#rb-options-header-links {	
+		display: none;
+		position: absolute;
+		background-color: #0D97DB;
+		left: -271px;
+		width: 320px;
+		height: 300px;
+		margin: 49px 0 0 0;
+	}
+	
+	#rb-options-header-links a {
+		font-size: 18px;
+		line-height: 64px;
+		display: block;
+		padding-left: 20px;
+		height: 63px;
+		border-bottom: 1px rgb(0, 175, 255) solid;
+		text-decoration: none;
+	}
+	
+	#rb-options-header-links a:hover {
+		text-decoration: none;
+		background-color: rgb(0, 175, 255);
+	}
+	
+	 #after-first-item, #after-second-item, #after-third-item {
+		display: none;
+	}
+	
+}
+
